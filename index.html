@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meet Me If You Can</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#f0f0f0',
+              text: '#3D423F',
+            }
+          },
+          fontFamily: {
+            sans: ['Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans" style="background-color: #f0f0f0; color: #3D423F;">
+
+  <main class="flex-1 flex items-center pl-16 pr-8">
+    <div class="max-w-2xl">
+      <h1 class="text-5xl font-bold tracking-tight leading-tight">
+        Meet Me If You Can
+      </h1>
+    </div>
+  </main>
+
+  <footer class="py-6 pl-16 pr-8 border-t border-gray-300">
+    <p class="text-sm opacity-60">
+      &copy; <span id="year"></span> Meet Me If You Can. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
