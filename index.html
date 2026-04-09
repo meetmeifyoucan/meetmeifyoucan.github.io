@@ -27,7 +27,7 @@
 
   <main class="flex-1 flex items-center pl-16 pr-8">
     <div class="max-w-2xl">
-      <h1 class="text-5xl font-bold tracking-tight leading-tight">
+      <h1 id="jumble" class="text-5xl font-bold tracking-tight leading-tight cursor-default select-none">
         Meet Me If You Can
       </h1>
     </div>
@@ -41,6 +41,36 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const el = document.getElementById('jumble');
+    const original = 'Meet Me If You Can';
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let interval = null;
+
+    function jumble() {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        el.textContent = original
+          .split('')
+          .map(char => {
+            if (char === ' ') return ' ';
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join('');
+      }, 60);
+    }
+
+    function restore() {
+      clearInterval(interval);
+      el.textContent = original;
+    }
+
+    el.addEventListener('mouseenter', jumble);
+    el.addEventListener('mouseleave', restore);
+
+    el.addEventListener('touchstart', (e) => { e.preventDefault(); jumble(); });
+    el.addEventListener('touchend', restore);
+    el.addEventListener('touchcancel', restore);
   </script>
 
 </body>
